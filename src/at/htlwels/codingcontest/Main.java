@@ -12,7 +12,8 @@ public class Main {
     public static void main(String[] args) {
         HashMap<String,Integer> Node = new HashMap<>();
         HashMap<String,Integer> Pool  = new HashMap<>();
-        Scanner in = new Scanner(System.in).useDelimiter(" ");
+        Scanner in = new Scanner(System.in);
+
 
         int totalamount = 0;
         int nodeamount;
@@ -20,20 +21,24 @@ public class Main {
         Integer nodevalue;
         int poolamount;
         String poolid;
-        Integer poolvalue;
-        nodeamount = in.nextInt();
+      int poolvalue=0;
+        nodeamount = Integer.parseInt(in.nextLine());
         for(int i=0;i<nodeamount;i++){
-            nodeid=in.next();
-            nodevalue=in.nextInt();
+            String line =in.nextLine();
+            String[] line1 = line.split(" ");
+            nodeid = line1[0];
+            nodevalue = Integer.parseInt(line1[1]);
             Node.put(nodeid,nodevalue);
         }
-        poolamount = in.nextInt();
+        poolamount = Integer.parseInt(in.nextLine());
         for(int j=0;j<poolamount;j++){
-            poolid=in.next();
-            poolvalue=
-            Node.get(in.next()) +
-            Node.get(in.next()) +
-            Node.get(in.next());
+            String line = in.nextLine();
+            String[] line1 = line.split(" ");
+            poolid = line1[0];
+            for(int x=1;x<line1.length;x++)
+            {
+                poolvalue = poolvalue + Node.get(line1[x]);
+            }
             Pool.put(poolid,poolvalue);
         }
 
@@ -41,9 +46,9 @@ public class Main {
             totalamount = totalamount + entry.getValue();
         }
 
-        System.out.println(totalamount);
+        System.out.print(totalamount+ " ");
         for(Map.Entry<String,Integer> entry1 : Pool.entrySet()){
-            System.out.println(entry1.getKey() + " " + entry1.getValue() + " ");
+            System.out.print(entry1.getKey() + " " + entry1.getValue() + " ");
         }
 
 
